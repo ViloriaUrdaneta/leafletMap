@@ -4,24 +4,30 @@ import { Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import pointer from '../assets/icon.svg'
 
-const Markers = () => {
+const Markers = (props) => {
 
     const customIcon = new Icon({
         iconUrl: pointer,
         iconSize: [48, 48],
     })
 
+    const {locationSelection} = props;
+
     const position = [51.528845, -0.172728]
 
     return (
-        <Marker
-            position={ position }
-            icon={ customIcon }
-        >
-            <Popup>
-                <h2>Hi mom</h2>
-            </Popup>
-        </Marker>
+        <div>
+            {locationSelection && (
+                <Marker
+                    position={ locationSelection }
+                    icon={ customIcon }
+                >
+                    <Popup>
+                        <h2>Hi mom</h2>
+                    </Popup>
+                </Marker>
+            )}
+        </div>
     );
 }
 
